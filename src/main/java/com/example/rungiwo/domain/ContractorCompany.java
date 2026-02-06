@@ -15,6 +15,7 @@ public class ContractorCompany {
     private String email;
     private String phone;
 
+
     protected ContractorCompany() {}
 
     public ContractorCompany(String name, String nip, String email, String phone) {
@@ -29,4 +30,9 @@ public class ContractorCompany {
     public String getNip() { return nip; }
     public String getEmail() { return email; }
     public String getPhone() { return phone; }
+
+    public void setName(String name) { this.name = name; }
+    public void setNip(String nip) { this.nip = nip; }
+    public void setEmail(String email) { this.email = email; }
+    public void setPhone(String phone) { this.phone = phone;}
 }

@@ -2,6 +2,7 @@ package com.example.rungiwo.controller;
 
 import com.example.rungiwo.domain.WorkOrderStatus;
 import com.example.rungiwo.dto.CreateWorkOrderRequest;
+import com.example.rungiwo.dto.UpdateWorkOrderRequest;
 import com.example.rungiwo.dto.UpdateWorkOrderStatusRequest;
 import com.example.rungiwo.dto.WorkOrderResponse;
 import com.example.rungiwo.service.WorkOrderService;
@@ -11,7 +12,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import io.swagger.v3.oas.annotations.Operation;
-
 
 @RestController
 public class WorkOrderController {
@@ -43,6 +43,13 @@ public class WorkOrderController {
         return service.get(id);
     }
 
+    @Operation(summary = "Update work order")
+    @PutMapping("/work-orders/{id}")
+    public WorkOrderResponse update(@PathVariable Long id,
+                                    @Valid @RequestBody UpdateWorkOrderRequest req) {
+        return service.update(id, req);
+    }
+
     @Operation(summary = "Update work order status")
     @PatchMapping("/work-orders/{id}/status")
     public WorkOrderResponse updateStatus(@PathVariable Long id,
@@ -50,5 +57,10 @@ public class WorkOrderController {
         return service.updateStatus(id, req);
     }
 
-
+    @Operation(summary = "Delete work order")
+    @DeleteMapping("/work-orders/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void delete(@PathVariable Long id) {
+        service.delete(id);
+    }
 }

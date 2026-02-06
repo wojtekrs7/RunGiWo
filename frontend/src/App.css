@@ -1,42 +1,326 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+.appShell {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 260px 1fr;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.sidebar {
+    background: #0b1220;
+    color: #e2e8f0;
+    padding: 18px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    position: sticky;
+    top: 0;
+    height: 100vh;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 10px;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.06);
+}
+
+.brandLogo {
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #60a5fa, #a78bfa);
+}
+
+.brandTitle {
+    font-weight: 700;
+    letter-spacing: 0.2px;
+}
+
+.nav {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 8px;
+}
+
+.navLink {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 10px;
+    border-radius: 10px;
+    color: #cbd5e1;
+    transition: background 140ms ease, color 140ms ease;
+}
+
+.navLink:hover {
+    background: rgba(255,255,255,0.06);
+    color: #ffffff;
+}
+
+.navLinkActive {
+    background: rgba(96, 165, 250, 0.18);
+    color: #ffffff;
+}
+
+.sidebarFooter {
+    margin-top: auto;
+    padding: 10px;
+    color: #94a3b8;
+    font-size: 12px;
+}
+
+.content {
+    padding: 22px 22px 40px;
+}
+
+.pageHeader {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.pageTitle {
+    margin: 0;
+    font-size: 22px;
+    letter-spacing: 0.2px;
+}
+
+.pageSubtitle {
+    margin: 6px 0 0;
+    color: #64748b;
+    font-size: 14px;
 }
 
 .card {
-  padding: 2em;
+    background: #ffffff;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    border-radius: 16px;
+    box-shadow: 0 8px 18px rgba(2, 6, 23, 0.05);
 }
 
-.read-the-docs {
-  color: #888;
+.cardBody {
+    padding: 16px;
+}
+
+.toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+@media (max-width: 900px) {
+    .appShell {
+        grid-template-columns: 1fr;
+    }
+    .sidebar {
+        position: relative;
+        height: auto;
+    }
+    .row {
+        grid-template-columns: 1fr;
+    }
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.label {
+    font-size: 12px;
+    color: #64748b;
+}
+
+.input, .select, .textarea {
+    border: 1px solid rgba(15, 23, 42, 0.14);
+    border-radius: 12px;
+    padding: 10px 12px;
+    background: #ffffff;
+    outline: none;
+}
+
+.textarea {
+    min-height: 92px;
+    resize: vertical;
+}
+
+.input:focus, .select:focus, .textarea:focus {
+    border-color: rgba(96, 165, 250, 0.9);
+    box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.22);
+}
+
+.btn {
+    border: 1px solid rgba(15, 23, 42, 0.14);
+    background: #ffffff;
+    padding: 10px 12px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: transform 80ms ease, box-shadow 140ms ease, background 140ms ease;
+}
+
+.btn:hover {
+    background: rgba(15, 23, 42, 0.03);
+}
+
+.btn:active {
+    transform: translateY(1px);
+}
+
+.btnPrimary {
+    border-color: rgba(37, 99, 235, 0.35);
+    background: rgba(37, 99, 235, 0.12);
+}
+
+.btnDanger {
+    border-color: rgba(239, 68, 68, 0.35);
+    background: rgba(239, 68, 68, 0.12);
+}
+
+.btnSmall {
+    padding: 8px 10px;
+    border-radius: 10px;
+    font-size: 13px;
+}
+
+.tableWrap {
+    overflow: auto;
+    border-radius: 14px;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 720px;
+    background: #fff;
+}
+
+.table th, .table td {
+    text-align: left;
+    padding: 12px 12px;
+    border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+    vertical-align: top;
+}
+
+.table th {
+    font-size: 12px;
+    color: #64748b;
+    background: rgba(2, 6, 23, 0.02);
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    border: 1px solid rgba(15, 23, 42, 0.12);
+    background: rgba(2, 6, 23, 0.02);
+}
+
+.modalBackdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(2, 6, 23, 0.55);
+    display: grid;
+    place-items: center;
+    padding: 18px;
+    z-index: 50;
+}
+
+.modal {
+    width: min(720px, 100%);
+    border-radius: 18px;
+    background: #ffffff;
+    border: 1px solid rgba(15, 23, 42, 0.12);
+    box-shadow: 0 22px 60px rgba(2, 6, 23, 0.35);
+}
+
+.modalHeader {
+    padding: 14px 16px;
+    border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.modalTitle {
+    margin: 0;
+    font-size: 16px;
+}
+
+.modalBody {
+    padding: 16px;
+}
+
+.modalFooter {
+    padding: 14px 16px;
+    border-top: 1px solid rgba(15, 23, 42, 0.08);
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.alert {
+    border: 1px solid rgba(239, 68, 68, 0.25);
+    background: rgba(239, 68, 68, 0.08);
+    color: #7f1d1d;
+    padding: 10px 12px;
+    border-radius: 14px;
+}
+
+.muted {
+    color: #64748b;
+    font-size: 13px;
+}
+
+.rightActions {
+    display: inline-flex;
+    gap: 8px;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.kpiRow {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    margin-bottom: 14px;
+}
+
+@media (max-width: 900px) {
+    .kpiRow {
+        grid-template-columns: 1fr;
+    }
+}
+
+.kpi {
+    padding: 12px 14px;
+}
+
+.kpiLabel {
+    font-size: 12px;
+    color: #64748b;
+    margin: 0;
+}
+
+.kpiValue {
+    margin: 6px 0 0;
+    font-size: 20px;
+    font-weight: 700;
 }

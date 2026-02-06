@@ -49,7 +49,10 @@ public class WorkOrder {
     public WorkOrderStatus getStatus() { return status; }
     public Instant getCreatedAt() { return createdAt; }
 
-    public void setStatus(WorkOrderStatus status) {
-        this.status = status;
-    }
+    public void setContractor(ContractorCompany contractor) { this.contractor = contractor; }
+    public void setTitle(String title) { this.title = title; }
+    public void setDescription(String description) { this.description = description; }
+    public void setPriority(Priority priority) { this.priority = priority; }
+
+    public void setStatus(WorkOrderStatus status) { this.status = status; }
 }

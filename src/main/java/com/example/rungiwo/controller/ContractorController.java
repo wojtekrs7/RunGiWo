@@ -38,11 +38,16 @@ public class ContractorController {
         return service.get(id);
     }
 
+    @Operation(summary = "Update subcontractor company")
+    @PutMapping("/{id}")
+    public ContractorResponse update(@PathVariable Long id, @Valid @RequestBody UpdateContractorRequest req) {
+        return service.update(id, req);
+    }
+
     @Operation(summary = "Delete subcontractor company")
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable Long id) {
         service.delete(id);
     }
-
 }

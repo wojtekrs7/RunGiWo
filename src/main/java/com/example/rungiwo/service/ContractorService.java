@@ -18,7 +18,9 @@ public class ContractorService {
     }
 
     public ContractorResponse create(CreateContractorRequest req) {
-        ContractorCompany saved = repo.save(new ContractorCompany(req.name(), req.nip(), req.email(), req.phone()));
+        ContractorCompany saved = repo.save(
+                new ContractorCompany(req.name(), req.nip(), req.email(), req.phone())
+        );
         return toResponse(saved);
     }
 
@@ -34,11 +36,30 @@ public class ContractorService {
         repo.delete(getEntity(id));
     }
 
+    public ContractorResponse update(Long id, UpdateContractorRequest req) {
+        ContractorCompany c = getEntity(id);
+
+        c.setName(req.name());
+        c.setNip(req.nip());
+        c.setEmail(req.email());
+        c.setPhone(req.phone());
+
+        ContractorCompany saved = repo.save(c);
+        return toResponse(saved);
+    }
+
     public ContractorCompany getEntity(Long id) {
-        return repo.findById(id).orElseThrow(() -> new NotFoundException("Contractor not found: " + id));
+        return repo.findById(id)
+                .orElseThrow(() -> new NotFoundException("Contractor not found: " + id));
     }
 
     private ContractorResponse toResponse(ContractorCompany c) {
-        return new ContractorResponse(c.getId(), c.getName(), c.getNip(), c.getEmail(), c.getPhone());
+        return new ContractorResponse(
+                c.getId(),
+                c.getName(),
+                c.getNip(),
+                c.getEmail(),
+                c.getPhone()
+        );
     }
 }
